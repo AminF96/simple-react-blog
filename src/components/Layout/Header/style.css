@@ -1,0 +1,87 @@
+.navbar-custom {
+  background-color: var(--light-black);
+}
+
+.navbar-brand-custom,
+.navbar-brand-custom:hover {
+  color: var(--light-green);
+}
+
+.nav-link-custom {
+  font-size: 13.5px !important;
+  color: var(--light-text-gray) !important;
+  border-bottom: 2px solid var(--light-black);
+  transition: 0.3s ease;
+}
+
+.nav-link-custom:hover {
+  color: #fff !important;
+}
+
+.active-link {
+  color: #fff !important;
+  border-bottom: 2px solid var(--green) !important;
+}
+
+.input-group-custom {
+  width: 35%;
+}
+
+.input-group-custom input {
+  padding-bottom: 10px;
+  font-size: 14px;
+  background-color: var(--gray);
+  border: none;
+  color: var(--light-text-gray) !important;
+}
+
+::placeholder {
+  color: #afabab !important;
+}
+
+.input-group-custom input:focus {
+  background-color: var(--gray);
+  box-shadow: none;
+}
+
+.input-group-custom button {
+  background-color: var(--green);
+  transition: 0.3s;
+  color: var(--light-text-gray);
+  border: none;
+}
+
+.input-group-custom button:hover {
+  background-color: #2e7d32;
+}
+
+.input-group-custom input,
+.input-group-custom button {
+  height: 30px;
+  border-radius: 3px;
+}
+
+/* Media Queries Styles For Responsive -----------------------------------------------------------------------------*/
+
+@media screen and (max-width: 768px) {
+  .input-group-custom {
+    width: 55%;
+    margin-top: 10px;
+  }
+
+  .nav-link-custom,
+  .active-link {
+    width: 20%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  #navbarNavAltMarkup {
+    display: flex !important;
+    justify-content: space-between !important;
+  }
+
+  .input-group-custom {
+    margin-right: 20px;
+  }
+}

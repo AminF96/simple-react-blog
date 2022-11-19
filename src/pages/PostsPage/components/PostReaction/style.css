@@ -1,0 +1,12 @@
+.post-reaction {
+  cursor: pointer;
+  transition: 0.6s ease-in !important;
+}
+
+.like-post {
+  color: #43a047 !important;
+}
+
+.dislike-post {
+  color: #e53935 !important;
+}

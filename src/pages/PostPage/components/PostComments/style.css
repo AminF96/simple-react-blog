@@ -1,0 +1,63 @@
+.post-comments {
+  border-top: 2px solid var(--light-black);
+}
+
+.comments-header h6 {
+  color: var(--card-text-white);
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.add-comment-input {
+  background-color: var(--dark-black);
+  font-size: 14px;
+  color: var(--light-text-gray);
+  border-bottom: 1px solid var(--gray) !important;
+  width: 100%;
+  resize: none;
+  height: 32px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.add-comment-input:focus,
+.add-comment-input:active,
+.add-comment-input:focus-visible {
+  outline: unset !important;
+}
+
+.add-comment-btn {
+  background-color: var(--light-black);
+  color: var(--light-text-gray);
+  font-size: 14px;
+  border: unset;
+  padding: 4px 10px;
+  border-radius: 2px;
+}
+
+.add-comment-btn:focus-visible {
+  outline: unset;
+}
+
+.add-comment-btn:disabled {
+  opacity: 0.5;
+}
+
+.comment {
+  padding: 15px 20px;
+  border-radius: 0 0 7px 7px;
+  background-color: var(--gray);
+  color: var(--light-black);
+}
+
+.comment-ago {
+  color: var(--light-text-gray);
+  font-size: 12px;
+}
+
+.comment p {
+  color: var(--card-text-white);
+  font-size: 14px;
+  line-height: 20px;
+  text-align: justify;
+}

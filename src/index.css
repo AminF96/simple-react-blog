@@ -1,0 +1,34 @@
+:root {
+  --dark-black: #121416;
+  --light-black: #252731;
+  --gray: #404144;
+  --light-text-gray: #bdbdbd;
+  --card-text-white: #f1f1f1;
+  --light-green: #00c853;
+  --green: #388e3c;
+  --dark-green: #2e7d32;
+}
+
+html,
+body,
+#root {
+  height: 100% !important;
+}
+
+.content-container {
+  min-height: 90vh;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+ul {
+  list-style: none !important;
+}
+
+main {
+  min-height: 91vh !important;
+  overflow-y: hidden;
+  background-color: var(--dark-black) !important;
+}

@@ -1,0 +1,65 @@
+
+.card-custom {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--light-black);
+    color: #fff;
+    height: 410px !important;
+    border-radius: 3px !important;
+  }
+  
+  .card-custom a {
+    overflow-y: hidden !important;
+  }
+  
+  .card-custom img {
+    height: 54% !important;
+  }
+  
+  .post-card-body {
+    overflow-y: hidden !important;
+    padding: 10px 15px 4px 20px;
+  }
+  
+  .card-author-badge {
+    border-radius: 2px !important;
+    font-size: 10.5px;
+    font-weight: 400;
+    padding: 6px 4.5px 6.5px 4.5px;
+    background-color: #3d4254;
+    color: var(--card-text-white);
+  }
+  
+  .card-time-ago {
+    font-size: 10.5px;
+    color: var(--light-text-gray);
+  }
+  
+  .card-post-title {
+    color: #fff !important;
+    font-weight: bold;
+    font-size: 19px;
+  }
+  
+  .card-post-summery {
+    font-size: 11.5px;
+    font-weight: 400;
+    color: var(--card-text-white);
+  }
+  
+  .post-card-footer {
+    border-top: 1px solid var(--gray);
+    padding-top: 5px;
+  }
+  
+  .post-card-footer ul {
+    display: flex;
+    justify-content: space-around;
+    padding-left: unset;
+    margin-bottom: 10px !important;
+  }
+  
+  .post-card-data {
+    color: var(--light-text-gray);
+    font-size: 13.5px;
+  }
