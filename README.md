@@ -4,7 +4,7 @@ A simple Blog Application that allows user to add posts by different authors, li
 
 # Technologies 
 
-Javascript , React , Redux , Bootstrap
+Javascript , React , Redux , Bootstrap, Sass
 
 # Getting Started with Create React App
 
