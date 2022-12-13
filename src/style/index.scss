@@ -1,0 +1,25 @@
+@import"variables";
+
+html,
+body,
+#root {
+  height: 100% !important;
+
+  a {
+    text-decoration: none !important;
+  }
+
+  ul {
+    list-style: none !important;
+  }
+
+  main {
+    min-height: 91vh !important;
+    overflow-y: hidden;
+    background-color: $dark-black !important;
+  }
+
+  .content-container {
+    min-height: 90vh;
+  }
+}

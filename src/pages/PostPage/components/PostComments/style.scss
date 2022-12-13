@@ -1,0 +1,67 @@
+@import "../../../../style/variables";
+@import "../../../../style/mixins";
+
+.post-comments {
+  border-top: 2px solid $light-black;
+
+  .comments-header {
+    h6 {
+      color: $card-text-white;
+      font-size: 16px;
+      font-weight: 400;
+    }
+  }
+
+  .add-comment-input {
+    @include setWidthAndHeight(100%, 32px);
+    background-color: $dark-black;
+    font-size: 14px;
+    color: $light-text-gray;
+    border-bottom: 1px solid $gray !important;
+    resize: none;
+    overflow: hidden;
+    box-sizing: border-box;
+
+    &:focus,
+    &:focus-visible,
+    &:active {
+      outline: unset !important;
+    }
+  }
+
+  .add-comment-btn {
+    background-color: $light-black;
+    color: $light-text-gray;
+    font-size: 14px;
+    border: unset;
+    padding: 4px 10px;
+    border-radius: 2px;
+
+    &:focus-visible {
+      outline: unset;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+    }
+  }
+
+  .comment {
+    padding: 15px 20px;
+    border-radius: 0 0 7px 7px;
+    background-color: $gray;
+    color: $light-black;
+
+    p {
+      color: $card-text-white;
+      font-size: 14px;
+      line-height: 20px;
+      text-align: justify;
+    }
+
+    .comment-ago {
+      color: $light-text-gray;
+      font-size: 12px;
+    }
+  }
+}

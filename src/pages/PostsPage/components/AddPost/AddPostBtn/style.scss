@@ -1,0 +1,102 @@
+@import "../../../../../style/variables";
+
+@mixin addBtnBeforeAfter {
+  transition: width 0.2s ease-in-out, border-radius 0.2s ease-in-out;
+  content: "";
+  position: absolute;
+  height: 4px;
+  width: 10px;
+  top: calc(50% - 2px);
+  background: $light-green;
+}
+@mixin addIconBeforeAfter {
+  transition: all 0.2s ease-in-out;
+  content: "";
+  position: absolute;
+  height: 20px;
+  width: 2px;
+  top: calc(50% - 10px);
+  background: $light-green;
+  overflow: hidden;
+}
+
+.icon-btn {
+  width: 50px;
+  height: 50px;
+  border: 1px solid $light-black;
+  background: $light-black;
+  border-radius: 25px;
+  overflow: hidden;
+  position: relative;
+  transition: width 0.2s ease-in-out;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.add-btn {
+  &:hover {
+    width: 120px;
+
+    &::before,
+    &::after {
+      width: 4px;
+      border-radius: 2px;
+    }
+
+    .btn-txt {
+      opacity: 1;
+    }
+
+    .add-icon::before {
+      left: 15px;
+      height: 4px;
+      top: calc(50% - 2px);
+    }
+
+    .add-icon::after {
+      right: 15px;
+      height: 4px;
+      top: calc(50% - 2px);
+    }
+  }
+
+  &::before {
+    @include addBtnBeforeAfter();
+    left: 14px;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+  }
+
+  &::after {
+    @include addBtnBeforeAfter();
+    right: 14px;
+    overflow: hidden;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+  }
+}
+
+.add-icon {
+  &::before {
+    @include addIconBeforeAfter();
+    left: 22px;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+  }
+
+  &::after {
+    @include addIconBeforeAfter();
+    right: 22px;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+  }
+}
+
+.btn-txt {
+  color: $light-text-gray;
+  font-size: 14px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}

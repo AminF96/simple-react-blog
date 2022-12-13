@@ -12,7 +12,7 @@ import PostBody from "./components/PostBody";
 import PostAuthorCard from "./components/PostAuthorCard";
 import PostComments from "./components/PostComments";
 import Error from "../../components/Error";
-import "./style.css";
+import "./style.scss";
 
 export default function PostPage({ dataStatus }) {
   const [reaction, setReaction] = useState(null);

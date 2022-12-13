@@ -1,0 +1,111 @@
+@import "../../style/variables";
+@import "../../style/mixins";
+
+.post-header {
+  h2 {
+    color: #fff;
+    font-weight: bold;
+    margin: unset;
+  }
+
+  span {
+    color: $light-text-gray;
+    font-size: 10px;
+    font-weight: 500;
+  }
+}
+
+.post-img {
+  max-height: 310px;
+  width: 95%;
+  border-radius: 3px;
+}
+
+.post-width {
+  width: 50%;
+}
+
+.post-reactions {
+  font-size: 1.1rem;
+  color: $light-text-gray;
+}
+
+.post-body {
+  color: $light-text-gray;
+  font-size: 12px;
+  text-align: justify !important;
+  line-height: 18px;
+}
+
+.post-author-card {
+  border-radius: 5px !important;
+  width: 50%;
+
+  img {
+    border-radius: 3px 0 0 3px !important;
+    object-fit: cover;
+    object-position: top !important;
+    @include setWidthAndHeight(100%, 100%);
+  }
+
+  .card-body {
+    @include setWidthAndHeight(100%, 100%);
+    padding-right: 9%;
+    padding-left: 6%;
+    background-color: $light-black;
+    color: $light-text-gray;
+    border-radius: 0 3px 3px 0 !important;
+
+    h5 {
+      font-size: 16px;
+    }
+  }
+
+  .about-author {
+    font-size: 12px;
+    line-height: 17px;
+    text-align: justify;
+  }
+
+  .social-media {
+    i {
+      font-size: 13px;
+      color: $light-text-gray;
+      cursor: pointer;
+      opacity: 0.8;
+      transition: 0.2s;
+
+      &:hover {
+        font-size: 15px !important;
+        opacity: 1 !important;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $width-edge) {
+  .post-width {
+    width: 75% !important;
+  }
+
+  .post-author-card {
+    img {
+      border-radius: 3px 3px 0 0 !important;
+    }
+
+    .card-body {
+      border-radius: 0 0 3px 3px !important;
+    }
+  }
+}
+
+@media screen and (min-width: $width-edge) {
+  .post-author-card {
+    height: 150px !important;
+
+    .row,
+    .row div[class^="col-md"] {
+      height: inherit !important;
+    }
+  }
+}

@@ -1,9 +1,0 @@
-.autor-wrapper:hover .author-img {
-  width: 190px;
-  height: 190px;
-}
-
-.autor-wrapper:hover .author-name,
-.autor-wrapper:hover .author-posts-count {
-  color: var(--light-text-gray);
-}

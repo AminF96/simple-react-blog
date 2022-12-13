@@ -1,0 +1,89 @@
+@import "../../../style/variables";
+
+@mixin searchFieldBase {
+  height: 30px;
+  border-radius: 3px;
+}
+
+.navbar-custom {
+  background-color: $light-black;
+
+  .navbar-brand-custom {
+    color: $light-green;
+  }
+
+  .nav-link-custom {
+    font-size: 13.5px !important;
+    color: $light-text-gray !important;
+    border-bottom: 2px solid $light-black;
+    transition: 0.3s ease;
+
+    &:hover {
+      color: #fff !important;
+    }
+  }
+
+  .active-link {
+    color: #fff !important;
+    border-bottom: 2px solid $green !important;
+  }
+
+  .input-group-custom {
+    width: 35%;
+
+    input {
+      @include searchFieldBase();
+      padding-bottom: 10px;
+      font-size: 14px;
+      background-color: $gray;
+      border: none;
+      color: $light-text-gray !important;
+
+      &::placeholder {
+        color: #afabab !important;
+      }
+
+      &:focus {
+        background-color: $gray;
+        box-shadow: none;
+      }
+    }
+
+    button {
+      @include searchFieldBase();
+      background-color: $green;
+      transition: 0.3s;
+      color: $light-text-gray;
+      border: none;
+
+      &:hover {
+        background-color: #2e7d32;
+      }
+    }
+  }
+}
+
+/* Media Queries Styles For Responsive ***************************************************************/
+
+@media screen and (max-width: $width-edge) {
+  .input-group-custom {
+    width: 55%;
+    margin-top: 10px;
+  }
+
+  .nav-link-custom,
+  .active-link {
+    width: 20%;
+  }
+}
+
+@media screen and (min-width: $width-edge) {
+  #navbarNavAltMarkup {
+    display: flex !important;
+    justify-content: space-between !important;
+  }
+
+  .input-group-custom {
+    margin-right: 20px;
+  }
+}

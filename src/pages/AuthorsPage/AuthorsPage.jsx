@@ -5,7 +5,6 @@ import Layout from "../../components/Layout";
 import Loader from "../../components/Loader";
 import Author from "../AuthorPage/Author";
 import Error from "../../components/Error";
-import "./style.css";
 
 export default function AuthorsPage({ dataStatus }) {
   const authorsIds = useSelector(selectAuthorsIds, shallowEqual);

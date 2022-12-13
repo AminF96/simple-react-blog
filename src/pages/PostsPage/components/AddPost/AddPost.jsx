@@ -1,6 +1,6 @@
 import AddPostBtn from "./AddPostBtn";
 import AddPostForm from "./AddPostForm";
-import "./style.css";
+import "./style.scss";
 
 export default function AddPost() {
   return (

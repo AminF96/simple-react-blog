@@ -1,0 +1,39 @@
+@import "../../style/variables";
+@import "../../style/mixins";
+
+.autor-wrapper {
+  display: inline-block;
+  width: 195px !important;
+
+  .author-img {
+    @include setWidthAndHeight(180px, 180px);
+    object-fit: cover;
+    object-position: top !important;
+    transition: 0.5s;
+  }
+
+  .author-name {
+    font-size: 17px;
+    font-weight: 500;
+    transition: 0.3s;
+    color: $gray;
+  }
+
+  .author-posts-count {
+    font-size: 15px;
+    font-weight: 400;
+    transition: 0.3s;
+    color: $gray;
+  }
+
+  &:hover {
+    .author-img {
+      @include setWidthAndHeight(190px, 190px);
+    }
+
+    .author-name,
+    .author-posts-count {
+      color: $light-text-gray;
+    }
+  }
+}

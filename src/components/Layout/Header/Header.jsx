@@ -1,7 +1,7 @@
 import SearchInput from "./SearchInput";
 import { NavLink } from "react-router-dom";
 import paths from "../../../router/paths";
-import "./style.css";
+import "./style.scss";
 
 export default function Header() {
   const linkClass = "nav-link nav-link-custom text-light ms-1";

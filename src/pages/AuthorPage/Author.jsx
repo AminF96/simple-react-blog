@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { selectAuthorById } from "../AuthorsPage/authorsSlice";
 import { selectPostsByAuthor } from "../PostsPage/postsSlice";
-import "./style.css";
+import "./style.scss";
 
 export default function Author({ authorId }) {
   const author = useSelector((state) => selectAuthorById(state, authorId));

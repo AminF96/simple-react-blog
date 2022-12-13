@@ -5,7 +5,7 @@ import { selectCommentsIdsByPost } from "../../../../PostPage/components/PostCom
 import { selectPostById } from "../../../postsSlice";
 import PostCardBody from "./PostCardBody";
 import PostCardFooter from "./PostCardFooter";
-import "./style.css";
+import "./style.scss";
 
 export default function PostCard({ postId }) {
   const post = useSelector((state) => selectPostById(state, postId));

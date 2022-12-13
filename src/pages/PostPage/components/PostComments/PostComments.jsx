@@ -3,7 +3,7 @@ import { selectCommentsIdsByPost } from "./commentsSlice";
 import CommentsHeader from "./CommentsHeader";
 import AddComment from "./AddComment";
 import CommentsBody from "./CommentsBody";
-import "./style.css";
+import "./style.scss";
 
 export default function PostComments({ postId }) {
   const postCommentsIds = useSelector(

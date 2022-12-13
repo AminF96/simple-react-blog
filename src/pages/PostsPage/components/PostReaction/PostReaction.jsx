@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { increasePostReaction } from "../../postsSlice";
-import "./style.css";
+import "./style.scss";
 
 export default function PostReaction({
   reactionType,
