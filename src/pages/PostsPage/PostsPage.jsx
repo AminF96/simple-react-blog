@@ -1,32 +1,21 @@
-import { useState, useLayoutEffect, useEffect } from "react";
-import { useSearchParams, useLocation } from "react-router-dom";
+import { useLayoutEffect, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useSearchParams } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { DataStatusTypes } from "./postsSlice";
+import {
+  DataStatusTypes,
+  searchTitleChanged,
+  postsSearchTitleSelector,
+} from "./postsSlice";
 import blogSearchParams from "../../router/blogSearchParams";
-import Layout from "../../components/Layout";
 import Loader from "../../components/Loader";
 import AddPost from "./components/AddPost";
 import PostsCards from "./components/PostsCards/PostsCards";
 import Error from "../../components/Error";
 
 export default function PostsPage({ dataStatus }) {
-  const [searchTitle, setSearchTitle] = useState(null);
-  let [searchParams, setSearchParams] = useSearchParams();
-  const location = useLocation();
-
-  useLayoutEffect(() => {
-    if (location.state) {
-      setSearchTitle(location.state.title);
-    } else {
-      setSearchTitle(searchParams.get(blogSearchParams.PostTitle));
-    }
-  }, [location.state, searchParams]);
-
-  useEffect(() => {
-    searchTitle &&
-      setSearchParams({ [blogSearchParams.PostTitle]: searchTitle });
-  }, [searchTitle, setSearchParams]);
+  const searchTitle = useSearchTitle();
 
   let result;
 
@@ -52,7 +41,7 @@ export default function PostsPage({ dataStatus }) {
   }
 
   return (
-    <Layout>
+    <>
       {result}
       <ToastContainer
         position="bottom-center"
@@ -66,6 +55,26 @@ export default function PostsPage({ dataStatus }) {
         pauseOnHover={false}
         theme="dark"
       />
-    </Layout>
+    </>
   );
+}
+
+function useSearchTitle() {
+  let [searchParams, setSearchParams] = useSearchParams();
+  const searchTitle = useSelector(postsSearchTitleSelector);
+  const dispatch = useDispatch();
+
+  useLayoutEffect(() => {
+    const searchQuery = searchParams.get(blogSearchParams.PostTitle);
+    if (searchQuery) {
+      dispatch(searchTitleChanged(searchQuery));
+    }
+  }, [dispatch, searchParams]);
+
+  useEffect(() => {
+    searchTitle &&
+      setSearchParams({ [blogSearchParams.PostTitle]: searchTitle });
+  }, [searchTitle, setSearchParams]);
+
+  return searchTitle;
 }

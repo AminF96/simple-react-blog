@@ -22,6 +22,7 @@ const postsAdapter = createEntityAdapter({
 
 const initialState = postsAdapter.getInitialState({
   status: DataStatusTypes.Idle,
+  searchTitle: null,
 });
 
 // Thunk Functions --------------------------------------------------------------------------------
@@ -51,7 +52,11 @@ export const saveNewPost = createAsyncThunk(
 const postsSlice = createSlice({
   name: "posts",
   initialState,
-  reducers: {},
+  reducers: {
+    searchTitleChanged(state, action) {
+      state.searchTitle = action.payload;
+    },
+  },
   extraReducers: {
     [fetchPosts.fulfilled]: (state, action) => {
       state.status = DataStatusTypes.Success;
@@ -73,10 +78,14 @@ const postsSlice = createSlice({
   },
 });
 
+export const { searchTitleChanged } = postsSlice.actions;
+
 export default postsSlice.reducer;
 
 // Selectors
 export const postsStatusSelector = (state) => state.posts.status;
+
+export const postsSearchTitleSelector = (state) => state.posts.searchTitle;
 
 export const {
   selectIds: selectPostsIds,
@@ -95,7 +104,7 @@ export const selectPostsIdsByTitle = createSelector(
   (state, postTitle) => postTitle,
   (posts, postTitle) => {
     const result = postTitle
-      ? posts.filter((post) => post.title.includes(postTitle))
+      ? posts.filter((post) => post.title.toLowerCase().includes(postTitle.toLowerCase()))
       : posts;
     return result.map((post) => post.id);
   }

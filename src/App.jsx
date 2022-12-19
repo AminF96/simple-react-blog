@@ -1,6 +1,6 @@
-import { useState, useLayoutEffect } from "react";
+import { useState, useLayoutEffect, lazy, Suspense } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, Outlet } from "react-router-dom";
 import paths from "./router/paths";
 import { DataStatusTypes } from "./pages/PostsPage/postsSlice";
 import { postsStatusSelector, fetchPosts } from "./pages/PostsPage/postsSlice";
@@ -12,13 +12,60 @@ import {
   commentsStatusSelector,
   fetchComments,
 } from "./pages/PostPage/components/PostComments/commentsSlice";
-import PostsPage from "./pages/PostsPage";
-import AuthorsPage from "./pages/AuthorsPage";
-import PostPage from "./pages/PostPage";
-import AuthorPage from "./pages/AuthorPage";
-import NotFoundPage from "./pages/NotFoundPage";
+import Layout from "./components/Layout";
+import Loader from "./components/Loader";
+
+const PostsPage = lazy(() => import("./pages/PostsPage"));
+const AuthorsPage = lazy(() => import("./pages/AuthorsPage"));
+const PostPage = lazy(() => import("./pages/PostPage"));
+const AuthorPage = lazy(() => import("./pages/AuthorPage"));
+const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
 
 export default function App() {
+  const status = useHanleDataStatus();
+
+  return (
+    <>
+      <Routes>
+        <Route path="/" element={<LayoutWrapper />}>
+          <Route
+            path={paths.HomePage}
+            element={<PostsPage dataStatus={status} />}
+          />
+          <Route
+            path={paths.PostPage}
+            element={<PostPage dataStatus={status} />}
+          />
+          <Route
+            path={paths.AuthorsPage}
+            element={<AuthorsPage dataStatus={status} />}
+          />
+          <Route
+            path={paths.AuthorPage}
+            element={<AuthorPage dataStatus={status} />}
+          />
+          <Route path={paths.NotFoundPage} element={<NotFoundPage />} />
+          <Route
+            path="*"
+            element={<Navigate to={paths.NotFoundPage} replace />}
+          />
+        </Route>
+      </Routes>
+    </>
+  );
+}
+
+function LayoutWrapper() {
+  return (
+    <Layout>
+      <Suspense fallback={<Loader />}>
+        <Outlet />
+      </Suspense>
+    </Layout>
+  );
+}
+
+function useHanleDataStatus() {
   const [status, setStatus] = useState(DataStatusTypes.Pending);
 
   const dispatch = useDispatch();
@@ -56,23 +103,5 @@ export default function App() {
     }
   }, [authorsStatus, commentsStatus, dispatch, postsStatus]);
 
-  return (
-    <Routes>
-      <Route
-        path={paths.HomePage}
-        element={<PostsPage dataStatus={status} />}
-      />
-      <Route path={paths.PostPage} element={<PostPage dataStatus={status} />} />
-      <Route
-        path={paths.AuthorsPage}
-        element={<AuthorsPage dataStatus={status} />}
-      />
-      <Route
-        path={paths.AuthorPage}
-        element={<AuthorPage dataStatus={status} />}
-      />
-      <Route path={paths.NotFoundPage} element={<NotFoundPage />} />
-      <Route path="*" element={<Navigate to={paths.NotFoundPage} replace />} />
-    </Routes>
-  );
+  return status;
 }

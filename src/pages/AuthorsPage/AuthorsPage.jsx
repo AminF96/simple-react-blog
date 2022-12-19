@@ -1,7 +1,6 @@
 import { shallowEqual, useSelector } from "react-redux";
 import { DataStatusTypes } from "../PostsPage/postsSlice";
 import { selectAuthorsIds } from "./authorsSlice";
-import Layout from "../../components/Layout";
 import Loader from "../../components/Loader";
 import Author from "../AuthorPage/Author";
 import Error from "../../components/Error";
@@ -32,5 +31,5 @@ export default function AuthorsPage({ dataStatus }) {
       result = null;
       break;
   }
-  return <Layout>{result}</Layout>;
+  return result;
 }

@@ -18,7 +18,7 @@ export default function PostsCards({ searchTitle }) {
       {searchTitle && (
         <div
           className="mb-4"
-          style={{ color: "var(--card-text-white)", fontSize: "22px" }}
+          style={{ color: "#f1f1f1", fontSize: "22px" }}
         >
           {`Search Results For "${searchTitle}" :`}
         </div>

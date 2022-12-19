@@ -1,20 +1,19 @@
-import { useState, useLayoutEffect } from "react";
+import { useLayoutEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { useSearchParams, useNavigate } from "react-router-dom";
+import { searchTitleChanged } from "../../../pages/PostsPage/postsSlice";
 import blogSearchParams from "../../../router/blogSearchParams";
 import paths from "../../../router/paths";
 
 export default function SearchInput() {
-  let [searchParams] = useSearchParams();
-  const [searchTitle, setSearchTitle] = useState("");
+  const { setSearchTitle, searchInput, searchInputChangeHandler } =
+    useSearchTitleHandler();
   const navigate = useNavigate();
 
   const searchHandler = () => {
-    navigate(paths.HomePage, { state: { title: searchTitle } });
+    setSearchTitle(searchInput);
+    navigate(paths.HomePage);
   };
-
-  useLayoutEffect(() => {
-    setSearchTitle(searchParams.get(blogSearchParams.PostTitle));
-  }, [searchParams]);
 
   return (
     <div className="input-group input-group-custom">
@@ -24,12 +23,32 @@ export default function SearchInput() {
         placeholder="search post title"
         aria-label="Input group example"
         aria-describedby="btnGroupAddon"
-        value={searchTitle || ""}
-        onChange={(e) => setSearchTitle(e.target.value)}
+        value={searchInput || ""}
+        onChange={(e) => searchInputChangeHandler(e.target.value)}
       />
       <button className="input-group-text" onClick={searchHandler}>
         <i className="fa fa-search"></i>
       </button>
     </div>
   );
+}
+
+function useSearchTitleHandler() {
+  const [searchInput, setSearchInput] = useState("");
+  let [searchParams] = useSearchParams();
+  const dispatch = useDispatch();
+
+  useLayoutEffect(() => {
+    const searchQuery = searchParams.get(blogSearchParams.PostTitle);
+    setSearchInput(searchQuery);
+    dispatch(searchTitleChanged(searchQuery));
+  }, [dispatch, searchParams]);
+
+  const searchInputChangeHandler = (value) => setSearchInput(value);
+
+  const setSearchTitle = (value) => {
+    dispatch(searchTitleChanged(value));
+  };
+
+  return { setSearchTitle, searchInput, searchInputChangeHandler };
 }

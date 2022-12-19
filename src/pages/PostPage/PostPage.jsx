@@ -1,10 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { DataStatusTypes } from "../PostsPage/postsSlice";
 import { selectPostById } from "../PostsPage/postsSlice";
 import { selectAuthorById } from "../AuthorsPage/authorsSlice";
-import Layout from "../../components/Layout";
 import Loader from "../../components/Loader";
 import PostHeader from "./components/PostHeader";
 import PostReaction from "../PostsPage/components/PostReaction";
@@ -72,9 +71,7 @@ export default function PostPage({ dataStatus }) {
       break;
   }
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  window.scrollTo(0, 0);
 
-  return <Layout>{result}</Layout>;
+  return result;
 }

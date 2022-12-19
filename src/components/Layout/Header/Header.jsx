@@ -1,11 +1,21 @@
 import SearchInput from "./SearchInput";
-import { NavLink } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { NavLink, useSearchParams } from "react-router-dom";
+import { searchTitleChanged } from "../../../pages/PostsPage/postsSlice";
+import blogSearchParams from "../../../router/blogSearchParams";
 import paths from "../../../router/paths";
 import "./style.scss";
 
 export default function Header() {
   const linkClass = "nav-link nav-link-custom text-light ms-1";
   const activeLinkClass = linkClass + " active-link";
+  const dispatch = useDispatch();
+  let [searchParams] = useSearchParams();
+
+  const showAllPosts = () => {
+    searchParams.delete(blogSearchParams.PostTitle);
+    dispatch(searchTitleChanged(null));
+  };
 
   return (
     <header>
@@ -14,6 +24,7 @@ export default function Header() {
           <NavLink
             className="navbar-brand navbar-brand-custom h2"
             to={paths.HomePage}
+            onClick={showAllPosts}
           >
             Blog
           </NavLink>
@@ -36,6 +47,7 @@ export default function Header() {
                 }
                 to={paths.HomePage}
                 end
+                onClick={showAllPosts}
               >
                 Posts
               </NavLink>

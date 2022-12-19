@@ -2,7 +2,6 @@ import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { DataStatusTypes } from "../PostsPage/postsSlice";
 import { selectPostsByAuthor } from "../PostsPage/postsSlice";
-import Layout from "../../components/Layout";
 import Loader from "../../components/Loader";
 import Author from "./Author";
 import PostCard from "../PostsPage/components/PostsCards/PostCard";
@@ -44,5 +43,5 @@ export default function AuthorPage({ dataStatus }) {
       result = null;
       break;
   }
-  return <Layout>{result}</Layout>;
+  return result;
 }
